@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment_11</title>
+    <link rel="stylesheet" href="assets/style/home.css">
+    <link rel="stylesheet" href="assets/style/customer.css">
+    <link rel="stylesheet" href="assets/style/item.css">
+    <link rel="stylesheet" href="assets/style/orders.css">
+    <link rel="stylesheet" href="assets/style/recent_orders.css">
+
+
+    <link rel="stylesheet" href="assets/style/normalize.css">
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+</head>
+
+<body>
+<section class="navigation">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav_list">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="font-size: 40px; font-weight: 1000">
+                <img src="assets/img/home.png" alt="Logo" width="80" height="60" class="d-inline-block align-content-center">
+                E-Mark
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a id="nav_cust" class="nav-link active" aria-current="page" href="#">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="nav_item" class="nav-link active" aria-current="page" href="#">Item</a>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Orders
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a id="nav_place" class="dropdown-item" href="#">+Place</a></li>
+                            <li><a id="nav_recent" class="dropdown-item" href="#">Recent</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section id="menu-section" class="home_man">
+    <div class="left_container">
+        <div class="left_container_inner">
+            <div id="title">
+                E-Mark
+                <p style="font-size: 20px;letter-spacing: 14px ">Go Mother With OnlineBuying.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="btnList rows">
+            <div class="cus-col col-sm-12 col-md-4 col-lg-4 col-xl-4" href="E-Marker-Shop/HTML/Customer_Section.html">
+                <div>
+                    Customer
+                    <img alt="customer" src="assets/img/customer.jpg"  width="200">
+                </div>
+            </div>
+            <div class="cus-col col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div>
+                    Item
+                    <img alt="item" src="assets/img/item.jpg" width="120">
+                </div>
+            </div>
+            <div class="cus-col col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div>
+                    Order
+                    <img alt="order" src="assets/img/orders.jpg" width="120">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="customer" class="customer">
+
+    <section>
+
+        <p class="h2">Customer</p>
+        <form id="customer_form">
+
+
+            <section id="customer_details">
+                <div class="mb-3">
+                    <label for="cust_id" class="form-label">Customer ID</label>
+                    <input id="cust_id" type="text" class="form-control" id="cust_id"
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input id="name" type="text" class="form-control" id="name"
+                           aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input id="address" type="text" class="form-control" id="address" aria-describedby="emailHelp">
+                </div>
+
+                <div class="mb-3">
+                    <label for="contact" class="form-label">Contact</label>
+                    <input id="contact" type="text" class="form-control" id="contact" aria-describedby="emailHelp">
+                </div>
+
+            </section>
+
+            <section id="customer_buttons">
+                <div class="mt-5">
+                    <button id="save_customer" type="button" class="btn btn-outline-success">Save</button>
+                    <button id="update_customer" type="button" class="btn btn-outline-warning">Update</button>
+                    <button id="delete_customer" type="button" class="btn btn-outline-danger">Delete</button>
+                    <button id="reset_customer" type="reset" class="btn btn-outline-secondary">Reset</button>
+                    <button id="search_customer" type="reset" class="btn btn-outline-dark">Search</button>
+                </div>
+
+
+            </section>
+        </form>
+
+    </section>
+
+
+    <section>
+        <div></div>
+        <table class="table">
+
+            <thead>
+            <tr>
+                <th scope="col">Cus_ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Contact</th>
+
+            </tr>
+            </thead>
+            <tbody id="customer-tbl-body">
+            </tbody>
+        </table>
+
+    </section>
+
+</section>
+
+<section id="item" class="item">
+
+    <section>
+        <p class="h2">Item</p>
+
+        <form id="item_form">
+
+            <section id="item_details">
+                <div class="mb-3">
+                    <label for="item_id" class="form-label">Code</label>
+                    <input id="item_id" type="text" class="form-control" id="item_id"
+                           aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="desc" class="form-label">Description</label>
+                    <input id="desc" type="text" class="form-control" id="desc"
+                           aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="qty" class="form-label">Qty.</label>
+                    <input id="qty" type="text" class="form-control" id="qty" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input id="price" type="text" class="form-control" id="price" aria-describedby="emailHelp">
+                </div>
+
+
+
+            </section>
+
+            <section id="item_buttons">
+                <div class="mt-5">
+                    <button id="save_item" type="button" class="btn btn-outline-success">Save</button>
+                    <button id="update_item" type="button" class="btn btn-outline-warning">Update</button>
+                    <button id="delete_item" type="button" class="btn btn-outline-danger">Delete</button>
+                    <button id="item_reset" type="reset" class="btn btn-outline-secondary">Reset</button>
+                    <button id="search_item" type="reset" class="btn btn-outline-dark">Search</button>
+
+                </div>
+
+
+            </section>
+        </form>
+
+    </section>
+
+
+    <section>
+        <div></div>
+        <table class="table">
+
+            <thead>
+            <tr>
+                <th scope="col">Item_ID</th>
+                <th scope="col">Desc</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty.</th>
+
+            </tr>
+            </thead>
+            <tbody id="item-tbl-body">
+
+            </tbody>
+        </table>
+
+    </section>
+</section>
+
+<section id="order" class="order">
+    <section>
+        <section id="order_form">
+            <p class="h2">Place order form</p>
+            <form>
+                <div class="mb-3">
+                    <label for="order_id" class="form-label">Order ID</label>
+                    <input type="text" class="form-control" id="order_id"
+                           aria-describedby="emailHelp" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer_id">Customer ID</label>
+                    <select class="form-control" id="customer_id">
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="customer_name" class="form-label">Customer Name</label>
+                    <input type="text" class="form-control" id="customer_name"
+                           aria-describedby="emailHelp" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="order_item_id">Item ID</label>
+                    <select class="form-control" id="order_item_id">
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description </label>
+                    <input type="text" class="form-control" id="description"
+                           aria-describedby="emailHelp" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label for="unit_price" class="form-label">Unit_Price </label>
+                    <input type="text" class="form-control" id="unit_price"
+                           aria-describedby="emailHelp" readonly>
+                </div>
+
+                <section id="order_details" class="row g-3">
+                    <div class="col-auto">
+                        <label for="qty_on_hand" class="form-label">Qty. on hand </label>
+                        <input type="text" class="form-control" id="qty_on_hand"
+                               aria-describedby="emailHelp" readonly>
+                    </div>
+
+
+                    <div class="col-auto">
+                        <label for="order_qty" class="form-label">Qty.</label>
+                        <input type="text" class="form-control" id="order_qty"
+                               aria-describedby="emailHelp">
+                    </div>
+                </section>
+
+                <button id="add_cart" type="button" class="btn btn-outline-success">+ Add to Cart</button>
+                <button id="remove" type="button" class="btn btn-outline-danger">Remove</button>
+            </form>
+        </section>
+    </section>
+    <section id="order_table">
+        <div></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Item_ID</th>
+                <th scope="col">Desc</th>
+                <th scope="col">Qty.</th>
+                <th scope="col">Total</th>
+
+            </tr>
+            </thead>
+            <tbody id="order_table_body">
+
+            </tbody>
+        </table>
+
+
+        <section class="row g-3">
+
+            <div class="col-auto">
+                <label for="final_total" class="form-label">Total</label>
+                <input id="final_total" type="text" class="form-control" id="final_total"
+                       aria-describedby="emailHelp">
+            </div>
+            <button id="place_ord" type="button" class="btn btn-outline-success">Place Order</button>
+        </section>
+
+
+    </section>
+
+</section>
+
+<section id="place_order" class="order_details">
+    <section class="order_details_cards" style="display: flex; flex-wrap: wrap; justify-content: center; position: relative; top: 100px;">
+        <div class="card border-primary mb-3">
+            <!--<div class="card-header">Order Details</div>-->
+            <div class="card-body text-primary">
+                <h5 class="card-title">Order ID: O001</h5>
+                <p class="card-text">Order Date: October 26, 2023</p>
+                <p class="card-text">Customer ID: C001</p>
+                <p class="card-text">Items: Item 1, Item 2, Item 3</p>
+                <p class="card-text">Total: $500.00</p>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="controller/home_page_controller.js"></script>
+<script src="assets/lib/jquery.min.js"></script>
+
+
+<script type="module" src="controller/customer_page_controller.js"></script>
+<script type="module" src="controller/item_page_controller.js"></script>
+<script type="module" src="controller/order_page_controller.js"></script>
+<script type="module" src="controller/recent_order_page_controller.js"></script>
+<script src="javaScript/Customer.js"></script>
+<script src="javaScript/Item.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+</script>
+
+
+</body>
+</html>
