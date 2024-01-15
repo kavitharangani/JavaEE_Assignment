@@ -335,7 +335,6 @@ function generateOrderID() {
     const lastOrderNumber = findHighestOrderNumber();
     const nextOrderNumber = lastOrderNumber + 1;
 
-    // Format the order number with leading zeros and "O" prefix
     const orderID = 'O' + nextOrderNumber.toString().padStart(3, '0');
 
     return orderID;

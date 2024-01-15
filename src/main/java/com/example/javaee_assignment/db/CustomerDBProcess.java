@@ -116,7 +116,6 @@ public class CustomerDBProcess {
 
         return customers;
     }
-
     public static CustomerDTO getCustomerById(String customerId, Connection connection) {
         try {
             PreparedStatement ps = connection.prepareStatement(GET_CUSTOMER_BY_ID);
@@ -138,6 +137,8 @@ public class CustomerDBProcess {
 
         return null;
     }
+
+
 
 
 }

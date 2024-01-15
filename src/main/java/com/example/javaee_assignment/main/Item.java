@@ -20,7 +20,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +56,7 @@ public class Item extends HttpServlet {
             }
         }
 
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getContentType() == null || !req.getContentType().toLowerCase().startsWith("application/json")) {
@@ -68,6 +72,7 @@ public class Item extends HttpServlet {
             jsonb.toJson(itemDTOList, resp.getWriter());
         }
     }
+
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -99,5 +104,35 @@ public class Item extends HttpServlet {
         var dbProcess = new ItemDBProcess();
         dbProcess.deleteItem(itemId, connection);
         resp.getWriter().write("Customer deleted successfully.");
+    }
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javaeeassignment", "root", "1234");
+            ResultSet rst = connection.prepareStatement("select * from item").executeQuery();
+            String allRecords = "";
+            while (rst.next()) {
+                String code = rst.getString("code");
+                String description = rst.getString("description");
+                int qty = rst.getInt("qty");
+                double unitPrice = rst.getDouble("unitPrice");
+                System.out.println(code + " " + description + " " + qty + " " + unitPrice);
+
+                String item = "{\"code\":\"" + code + "\",\"description\":\"" + description + "\",\"qty\":" + qty + ",\"unitPrice\":" + unitPrice + "},";
+                allRecords = allRecords + item;
+            }
+            String finalJson = "[" + allRecords.substring(0, allRecords.length() - 1) + "]";
+            PrintWriter writer = resp.getWriter();
+            writer.write(finalJson);
+            resp.setContentType("application/json");
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

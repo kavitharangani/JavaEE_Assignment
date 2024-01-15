@@ -75,6 +75,28 @@ $(document).ready(function (){
         $("#qty").val("");
         $("#price").val("");
     });
+
+
+    $("#nav_item").click(function () {
+        $("#item-tbl-body").empty();
+        $.ajax({
+            url: "http://localhost:8081/JavaEE_Assignment_war_exploded/item",
+            method: "GET",
+            dataType: "json",
+            success: function (resp) {
+                console.log(resp);
+                for (const item of resp) {
+                    let row = `<tr><td>${item.code}</td><td>${item.description}</td><td>${item.qty}</td><td>${item.unitPrice}</td></tr>`;
+                    $("#item-tbl-body").append(row);
+                }
+            }
+        });
+    });
+
+
+
+
+
 });
 
 

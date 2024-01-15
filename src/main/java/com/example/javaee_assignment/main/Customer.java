@@ -20,7 +20,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @WebServlet(name = "customer",urlPatterns = "/customer",
@@ -36,7 +39,7 @@ import java.sql.SQLException;
 
 public class Customer extends HttpServlet {
     Connection connection;
-    final  static Logger logger = LoggerFactory.getLogger(Customer.class);
+    final static Logger logger = LoggerFactory.getLogger(Customer.class);
 
     @Override
     public void init() throws ServletException {
@@ -104,24 +107,30 @@ public class Customer extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String customerId = req.getParameter("customer_id");
-
-        if (customerId == null || customerId.isEmpty()) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing customer_id parameter");
-            return;
-        }
-
         try {
-            CustomerDTO customerDTO = CustomerDBProcess.getCustomerById(customerId, connection);
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javaeeassignment", "root", "1234");
+            ResultSet rst = connection.prepareStatement("select * from customer").executeQuery();
+            String allRecords = "";
+            while (rst.next()) {
+                String customer_id = rst.getString(1);
+                String name = rst.getString(2);
+                String address = rst.getString(3);
+                String contact = rst.getString(4);
+                System.out.println(customer_id + " " + name + " " + address + " " + contact);
 
-            if (customerDTO != null) {
-                Jsonb jsonb = JsonbBuilder.create();
-                resp.getWriter().write(jsonb.toJson(customerDTO));
-            } else {
-                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Customer not found");
+                String customer = "{\"customer_id\":\"" + customer_id + "\",\"name\":\"" + name + "\",\"address\":\"" + address + "\",\"contact\":\"" + contact + "\"},";
+                allRecords = allRecords + customer;
             }
-        } catch (Exception e) {
-            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error processing request");
+            String finalJson = "[" + allRecords.substring(0, allRecords.length() - 1) + "]";
+            PrintWriter writer = resp.getWriter();
+            writer.write(finalJson);
+            resp.setContentType("application/json");
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
