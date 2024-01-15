@@ -82,21 +82,41 @@ $(document).ready(function (){
 
 
     $("#search_customer").click(function () {
-        let customer_idF = $("#cust_id").val();
+        let customerId = $("#search_customer_id").val();
+
+        // Add a check for a valid customer ID
+        if (!customerId) {
+            alert("Please enter a valid customer ID");
+            return;
+        }
 
         $.ajax({
             method: "GET",
-            contentType: "application/json",
-            url: "http://localhost:8081/JavaEE_Assignment_war_exploded/customer?customer_id=" + customer_idF,
-            async: true,
+            url: `http://localhost:8081/JavaEE_Assignment_war_exploded/customer?customer_id=${customerId}`,
+            dataType: "json",
             success: function (data) {
-                // Handle the response, e.g., update UI with customer information
-                console.log(data);
-                alert("Customer found");
+                if (data && data.customer_id) {
+                    // Update the input fields with the retrieved data
+                    $("#name").val(data.name);
+                    $("#address").val(data.address);
+                    $("#contact").val(data.contact);
+
+                    alert(`Customer found: ID - ${data.customer_id}, Name - ${data.name}, Address - ${data.address}, Contact - ${data.contact}`);
+                } else {
+                    alert("Customer not found");
+                }
             },
-            error: function (xhr, exception) {
-                alert("Error searching for customer");
+            error: function (xhr, status, error) {
+                console.error("Error searching for customer:", status, error);
+
+                // Check for specific error status and handle accordingly
+                if (xhr.status === 404) {
+                    alert("Customer not found");
+                } else {
+                    alert("Error searching for customer");
+                }
             }
         });
     });
+
 });

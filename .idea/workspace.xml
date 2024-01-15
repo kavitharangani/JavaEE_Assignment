@@ -9,7 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7aadb08f-c2e2-4c3c-a29b-64c92563a1d3" name="Changes" comment="" />
+    <list default="true" id="7aadb08f-c2e2-4c3c-a29b-64c92563a1d3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/assets/style/customer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/assets/style/customer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/assets/style/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/assets/style/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/assets/style/item.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/assets/style/item.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/assets/style/orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/assets/style/orders.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/controller/customer_page_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/controller/customer_page_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/db/CustomerDBProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/db/CustomerDBProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Customer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/main/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/main/Customer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,10 +30,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -31,6 +47,7 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="2afLgSiDjhh2ZSvfaIUXVxYhafa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -165,11 +182,26 @@
       <workItem from="1704822712965" duration="1289000" />
       <workItem from="1704858257313" duration="7669000" />
       <workItem from="1705114489378" duration="14846000" />
-      <workItem from="1705157827004" duration="6581000" />
+      <workItem from="1705157827004" duration="8018000" />
+      <workItem from="1705233215115" duration="430000" />
+      <workItem from="1705287476071" duration="1211000" />
+      <workItem from="1705288860231" duration="727000" />
+      <workItem from="1705294542306" duration="4837000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/main/Customer.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

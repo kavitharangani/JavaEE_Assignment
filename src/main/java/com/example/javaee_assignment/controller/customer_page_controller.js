@@ -17,62 +17,62 @@ const loadStudentData = () => {
 };
 
 
-// save
-// $("#save_customer[type='button']").on("click", () => {
-//     let cust_id = $("#cust_id").val();
-//     let validity = -1;
-//     validity = customer_db.findIndex(item => item.customer_id === cust_id);
-//
-//     if (validity === -1) {
-//
-//
-//         let name = $("#name").val();
-//         let address = $("#address").val();
-//         let contact = $("#contact").val();
-//
-//         if (cust_id) {
-//             if (name) {
-//                 if (address) {
-//
-//                     var contactValid = regMobile.test(contact);
-//
-//                     if (contact && contactValid) {
-//                         let customer_object = new CustomerModel(cust_id, name, address, contact);
-//
-//                         // save in the db
-//                         customer_db.push(customer_object);
-//
-//                         // clear();
-//                         $("#customer_reset[type='reset']").click();
-//
-//                         // load student data
-//                         loadStudentData();
-//                         toastr.success("Customer successfully added...✅");
-//
-//                     } else {
-//                         toastr.error("Contact is empty or invalid...❌");
-//                     }
-//
-//
-//                 } else {
-//                     toastr.error("Address is empty...❌");
-//                 }
-//
-//             } else {
-//                 toastr.error("Name is empty...❌");
-//             }
-//         } else {
-//             toastr.error("Customer ID is empty...❌");
-//         }
-//
-//
-//     } else {
-//         toastr.error("Customer ID already exists...❌");
-//
-//     }
-//
-//
-// });
+save
+$("#save_customer[type='button']").on("click", () => {
+    let cust_id = $("#cust_id").val();
+    let validity = -1;
+    validity = customer_db.findIndex(item => item.customer_id === cust_id);
+
+    if (validity === -1) {
+
+
+        let name = $("#name").val();
+        let address = $("#address").val();
+        let contact = $("#contact").val();
+
+        if (cust_id) {
+            if (name) {
+                if (address) {
+
+                    var contactValid = regMobile.test(contact);
+
+                    if (contact && contactValid) {
+                        let customer_object = new CustomerModel(cust_id, name, address, contact);
+
+                        // save in the db
+                        customer_db.push(customer_object);
+
+                        // clear();
+                        $("#customer_reset[type='reset']").click();
+
+                        // load student data
+                        loadStudentData();
+                        toastr.success("Customer successfully added...✅");
+
+                    } else {
+                        toastr.error("Contact is empty or invalid...❌");
+                    }
+
+
+                } else {
+                    toastr.error("Address is empty...❌");
+                }
+
+            } else {
+                toastr.error("Name is empty...❌");
+            }
+        } else {
+            toastr.error("Customer ID is empty...❌");
+        }
+
+
+    } else {
+        toastr.error("Customer ID already exists...❌");
+
+    }
+
+
+});
 
 /*update*/
 $("#update_customer[type='button']").on("click", () => {

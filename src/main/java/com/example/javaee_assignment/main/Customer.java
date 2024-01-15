@@ -6,6 +6,7 @@ import com.example.javaee_assignment.dto.CustomerDTO;
 import com.example.javaee_assignment.dto.ItemDTO;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebInitParam;
 import jakarta.servlet.annotation.WebServlet;
@@ -103,24 +104,25 @@ public class Customer extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String customerId = extractCustomerId(req);
+        String customerId = req.getParameter("customer_id");
+
         if (customerId == null || customerId.isEmpty()) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Customer ID is missing in the request.");
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing customer_id parameter");
             return;
         }
-        var dbProcess = new CustomerDBProcess();
-        CustomerDTO customer = dbProcess.searchCustomer(customerId, connection);
 
-        if (customer != null) {
-            resp.setContentType("application/json");
-            Jsonb jsonb = JsonbBuilder.create();
-            jsonb.toJson(customer, resp.getWriter());
-        } else {
-            resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Customer not found");
+        try {
+            CustomerDTO customerDTO = CustomerDBProcess.getCustomerById(customerId, connection);
+
+            if (customerDTO != null) {
+                Jsonb jsonb = JsonbBuilder.create();
+                resp.getWriter().write(jsonb.toJson(customerDTO));
+            } else {
+                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Customer not found");
+            }
+        } catch (Exception e) {
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error processing request");
         }
-    }
-    private String extractCustomerId(HttpServletRequest req) {
-       return null;
     }
 }
 
