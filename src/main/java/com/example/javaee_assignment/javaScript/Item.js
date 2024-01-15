@@ -1,28 +1,30 @@
 $(document).ready(function (){
-    $("#save_item").click(function (){
-        let  codeF =$("#item_id").val();
-        let  descriptionF =$("#desc").val();
-        let  qtyF =$("#qty").val();
-        let  unitPriceF =$("#price").val();
+    $("#save_item").click(function () {
+        let codeF = $("#item_id").val();
+        let descriptionF = $("#desc").val();
+        let qtyF = $("#qty").val();
+        let unitPriceF = $("#price").val();
+
         $.ajax({
-            method:"POST",
-            contentType:"application/json",
-            url:"http://localhost:8081/JavaEE_Assignment_war_exploded/item",
-            async:true,
-            data:JSON.stringify({
-                code:codeF,
-                description:descriptionF,
-                qty :qtyF,
-                unitPrice:unitPriceF
+            method: "POST",
+            contentType: "application/json",
+            url: "http://localhost:8081/JavaEE_Assignment_war_exploded/item",
+            async: true,
+            data: JSON.stringify({
+                code: codeF,
+                description: descriptionF,
+                qty: qtyF,
+                unitPrice: unitPriceF
             }),
             success: function (data) {
-                alert("saved")
+                reset();
+                alert("Saved successfully!");
             },
             error: function (xhr, exception) {
-                alert("Error")
+                alert("Error occurred while saving data.");
             }
-        })
-    })
+        });
+    });
 
 
     $("#update_item").click(function (){
@@ -42,6 +44,7 @@ $(document).ready(function (){
                 unitPrice:unitPriceF
             }),
             success: function (data) {
+                reset()
                 alert("saved")
             },
             error: function (xhr, exception) {
@@ -60,6 +63,7 @@ $(document).ready(function (){
             url: "http://localhost:8081/JavaEE_Assignment_war_exploded/item?code=" + codeF,
             async: true,
             success: function (data) {
+                reset()
                 alert("Item deleted successfully");
             },
             error: function (xhr, exception) {
@@ -70,14 +74,16 @@ $(document).ready(function (){
 
 
     $("#item_reset").click(function () {
+        reset();
+    });
+    const reset = () => {
         $("#item_id").val("");
         $("#desc").val("");
         $("#qty").val("");
         $("#price").val("");
-    });
-
-
-    $("#nav_item").click(function () {
+        loadAllCustomer();
+    }
+    const loadAllCustomer = () => {
         $("#item-tbl-body").empty();
         $.ajax({
             url: "http://localhost:8081/JavaEE_Assignment_war_exploded/item",
@@ -91,11 +97,10 @@ $(document).ready(function (){
                 }
             }
         });
+    }
+    $("#nav_item").click(function () {
+        loadAllCustomer();
     });
-
-
-
-
 
 });
 

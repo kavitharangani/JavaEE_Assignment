@@ -7,6 +7,8 @@ import {loadOrderCards} from "./recent_order_page_controller.js";
 
 var row_index = null;
 
+
+
 $('#customer_id').on('click', () => {
     customer_db.forEach(customer => {
         // Check if an option with the same customer_id already exists
