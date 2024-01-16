@@ -103,48 +103,51 @@ $(document).ready(function () {
                     let row = `<tr><td>${customer.customer_id}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.contact}</td></tr>;`
                     $("#customer-tbl-body").append(row);
                 }
+                callMethod();
             }
         });
     }
 
 
-//     $("#search_customer").click(function () {
-//         let customerId = $("#search_customer_id").val();
-//
-//         if (!customerId) {
-//             alert("Please enter a valid customer ID");
-//             return;
-//         }
-//         $.ajax({
-//             method: "GET",
-//             url: `http://localhost:8081/JavaEE_Assignment_war_exploded/customer?customer_id=${customerId}`,
-//             dataType: "json",
-//             success: function (data) {
-//                 if (data && data.customer_id) {
-//                     $("#name").val(data.name);
-//                     $("#address").val(data.address);
-//                     $("#contact").val(data.contact);
-//
-//                     alert(`Customer found: ID - ${data.customer_id}, Name - ${data.name}, Address - ${data.address}, Contact - ${data.contact}`);
-//                 } else {
-//                     alert("Customer not found");
-//                 }
-//             },
-//             error: function (xhr, status, error) {
-//                 console.error("Error searching for customer:", status, error);
-//
-//                 // Check for specific error status and handle accordingly
-//                 if (xhr.status === 404) {
-//                     alert("Customer not found");
-//                 } else {
-//                     alert("Error searching for customer");
-//                 }
-//             }
-//         });
-//     });
-//
-// });
+    function callMethod(){
+        $("#customer-tbl-body>tr").click(function (){
+            let customer_id =$(this).children().eq(0).text();
+            let name =$(this).children().eq(1).text();
+            let address =$(this).children().eq(2).text();
+            let contact =$(this).children().eq(3).text();
+
+            $("#cust_id").val(customer_id);
+            $("#name").val(name);
+            $("#address").val(address);
+            $("#contact").val(contact);
+        })
+    }
 
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+let customerData = [];
+$('#customer-search').on("input",()=>{
+    let search_term =$('#customer-search').val();
+    let results=customerData.filter((customer)=>
+        customer.name.toLowerCase().startsWith(search_term.toLowerCase()) ||customer.customer_id.startsWith(search_term));
+
+    $('#customer-tbl-body').empty();
+    results.map((customer, index) => {
+        let row = `<tr><td class="customer">${customer.customer_id}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.contact}</td></tr>;`
+        $("#customer-tbl-body").append(row);
+    });
+
+
+})

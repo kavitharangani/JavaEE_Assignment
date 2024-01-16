@@ -83,6 +83,8 @@ $(document).ready(function (){
         $("#price").val("");
         loadAllCustomer();
     }
+
+
     const loadAllCustomer = () => {
         $("#item-tbl-body").empty();
         $.ajax({
@@ -95,12 +97,29 @@ $(document).ready(function (){
                     let row = `<tr><td>${item.code}</td><td>${item.description}</td><td>${item.qty}</td><td>${item.unitPrice}</td></tr>`;
                     $("#item-tbl-body").append(row);
                 }
+                callMethod();
+
             }
         });
     }
     $("#nav_item").click(function () {
         loadAllCustomer();
     });
+
+
+    function callMethod(){
+        $("#item-tbl-body>tr").click(function (){
+            let code =$(this).children().eq(0).text();
+            let description =$(this).children().eq(1).text();
+            let qty =$(this).children().eq(2).text();
+            let unitPrice =$(this).children().eq(3).text();
+
+            $("#item_id").val(code);
+            $("#desc").val(description);
+            $("#qty").val(qty);
+            $("#price").val(unitPrice);
+        })
+    }
 
 });
 

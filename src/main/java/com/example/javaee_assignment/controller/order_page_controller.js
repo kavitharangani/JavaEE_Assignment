@@ -1,4 +1,4 @@
-import {customer_db, item_db, order_db} from "../javaScript/db.js";
+// import {customer_db, item_db, order_db} from "../javaScript/db.js";
 import {ItemModel} from "../model/ItemModel.js";
 import {OrderModel} from "../model/OrderModel.js";
 
@@ -11,7 +11,6 @@ var row_index = null;
 
 $('#customer_id').on('click', () => {
     customer_db.forEach(customer => {
-        // Check if an option with the same customer_id already exists
         const isCustomerAdded = Array.from(document.getElementById('customer_id').options).some(option => {
             const existingCustomer = JSON.parse(option.value);
             return existingCustomer.customer_id === customer.customer_id;
@@ -52,7 +51,6 @@ $('#order_item_id').on('click', () => {
         });
 
         if (!isItemAdded) {
-            // If the customer with the same customer_id doesn't exist, add a new option
             const option = document.createElement("option");
             option.value = JSON.stringify(item);
             option.text = item.item_id;
@@ -96,7 +94,6 @@ $('#order_item_id').on('change', () => {
 function calculateTotal() {
     let val = $('#order_qty').val();
     let price = $('#unit_price').val();
-
     let total = val * price;
 
     return total;
@@ -105,16 +102,13 @@ function calculateTotal() {
 
 $('#add_cart').on('click', () => {
 
-    // Get the item_id you want to check
     let item_id = $('#order_item_id option:selected').text();
 
-// Check if the item_id already exists in the table body
     let itemExists = false;
 
     $('#order_table_body .item_id').each(function () {
         if ($(this).text() === item_id) {
             itemExists = true;
-            // Update the quantity for the existing item
             let existingQty = parseInt($(this).closest('tr').find('.qty').text());
             let qty = parseInt($('#order_qty').val());
             let newQty = existingQty + qty;

@@ -18,17 +18,15 @@ const loadAllCustomerCode = () => {
         }
     });
 }
-
 $('#customer_id').change((e) => {
     const customer_id = e.target.value;
     if ('Select customer code' !== customer_id) {
         const name = e.target.options[e.target.selectedIndex].dataset.name;
-        const qty = e.target.options[e.target.selectedIndex].dataset.qty;
 
         $('#customer_name').val(name);
-        $('#customer_qty').val(qty);
     }
 })
+loadAllCustomerCode();
 
 
 
@@ -43,7 +41,7 @@ const loadAllItemCode = () => {
         success: function (resp) {
             console.log(resp);
             for (const item of resp) {
-                let option = `<option data-description="${item.description}" data-unitPrice="${item.unitPrice}" data-qty="${item.qty}">${item.code}</option>`;
+                let option = `<option data-description="${item.description}" data-unitPrice="${item.unitPrice}" data-qty="${item.qty}">${item.code}</option>;`
                 $("#order_item_id").append(option);
             }
         },
@@ -52,7 +50,6 @@ const loadAllItemCode = () => {
         }
     });
 }
-
 $('#order_item_id').change((e) => {
     const itemCode = e.target.value;
     if ('Select item code' !== itemCode) {
@@ -60,11 +57,36 @@ $('#order_item_id').change((e) => {
         $('#description').val(description);
 
         const unitPrice = e.target.options[e.target.selectedIndex].dataset.unitPrice;
-        $('#unit_price').val(unitPrice);
+        $('#unitPrice').val(unitPrice);
 
         const qty = e.target.options[e.target.selectedIndex].dataset.qty;
         $('#order_qty').val(qty);
     }
 })
 loadAllItemCode();
-loadAllCustomerCode();
+
+
+
+const loadAllOrder = () => {
+    $("#order_table_body").empty();
+    $.ajax({
+        url: "http://localhost:8081/JavaEE_Assignment_war_exploded/orders",
+        method: "GET",
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            for (const order of resp) {
+                let row = `<tr><td>${order.order_id}</td><td>${order.description}</td><td>${order.qty}</td><td>${order.qty}</td><td>${order.total}</td></tr>`;
+                $("#order_table_body").append(row);
+
+            }
+        },
+        error: function (xhr, exception) {
+            console.log("Error loading orders:", exception);
+        }
+    });
+}
+$("#add_cart").click(function () {
+    loadAllOrder();
+});
+
