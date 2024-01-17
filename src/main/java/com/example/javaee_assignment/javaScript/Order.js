@@ -9,7 +9,7 @@ const loadAllCustomerCode = () => {
         success: function (resp) {
             console.log(resp);
             for (const customer of resp) {
-                let option = `<option data-name="${customer.name}" data-qty="${customer.qty}">${customer.customer_id}</option>`;
+                let option = `<option data-name="${customer.name}">${customer.customer_id}</option>`;
                 $("#customer_id").append(option);
             }
         },
@@ -53,13 +53,13 @@ const loadAllItemCode = () => {
 $('#order_item_id').change((e) => {
     const itemCode = e.target.value;
     if ('Select item code' !== itemCode) {
-        const description = e.target.options[e.target.selectedIndex].dataset.description;
+        const description = e.target.options[e.target.selectedIndex].getAttribute('data-description');
         $('#description').val(description);
 
-        const unitPrice = e.target.options[e.target.selectedIndex].dataset.unitPrice;
+        const unitPrice = e.target.options[e.target.selectedIndex].getAttribute('data-unitPrice');
         $('#unitPrice').val(unitPrice);
 
-        const qty = e.target.options[e.target.selectedIndex].dataset.qty;
+        const qty = e.target.options[e.target.selectedIndex].getAttribute('data-qty');
         $('#order_qty').val(qty);
     }
 })
@@ -88,5 +88,14 @@ const loadAllOrder = () => {
 }
 $("#add_cart").click(function () {
     loadAllOrder();
+    calculateTotal();
 });
+$("#unitPrice, #qty_on_hand").on("input", calculateTotal);
+
+function calculateTotal(){
+    const unitPrice = parseFloat($("#unitPrice").val()) || 0;
+    const quantity = parseInt($("#qty_on_hand").val()) || 0;
+    const total = (unitPrice * quantity).toFixed(2);
+    $("#final_total").val(total);
+}
 
