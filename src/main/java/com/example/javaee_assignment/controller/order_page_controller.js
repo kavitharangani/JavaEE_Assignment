@@ -275,8 +275,7 @@ $('#place_ord').on('click', () => {
     let itemModel = null;
     var now = new Date();
 
-// Get the local date in various formats
-    var date = now.toLocaleDateString(); // R
+    var date = now.toLocaleDateString();
 
 
     for (let i = 0; i < $('#order_table_body tr').length; i++) {
@@ -284,10 +283,10 @@ $('#place_ord').on('click', () => {
         let row = $('#order_table_body tr').eq(i);
         let item_id = row.find('.item_id').text();
         let desc = row.find('.desc').text();
-        let qty = row.find('.qty').text();
+        let qtyOnHand = row.find('.qtyOnHand').text();
         let total = row.find('.total').text();
 
-        itemModel = new ItemModel(item_id, desc, total, qty);
+        itemModel = new ItemModel(item_id, desc, total, qtyOnHand);
 
 
         items.push(itemModel);

@@ -9,12 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7aadb08f-c2e2-4c3c-a29b-64c92563a1d3" name="Changes" comment="create click action">
+    <list default="true" id="7aadb08f-c2e2-4c3c-a29b-64c92563a1d3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/assets/style/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/assets/style/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/controller/home_page_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/controller/home_page_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/controller/order_page_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/controller/order_page_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Order.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/recent_order_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/recent_order_page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +192,8 @@
       <workItem from="1705377777428" duration="21972000" />
       <workItem from="1705403122200" duration="2050000" />
       <workItem from="1705415305411" duration="2400000" />
-      <workItem from="1705468174495" duration="2258000" />
+      <workItem from="1705468174495" duration="2599000" />
+      <workItem from="1705476768157" duration="9581000" />
     </task>
     <task id="LOCAL-00001" summary="create search">
       <created>1705300354046</created>
@@ -222,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705404415710</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="create total order form">
+      <created>1705471603807</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1705471603807</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,7 +241,8 @@
     <MESSAGE value="create search item form" />
     <MESSAGE value="create combo box order form" />
     <MESSAGE value="create click action" />
-    <option name="LAST_COMMIT_MESSAGE" value="create click action" />
+    <MESSAGE value="create total order form" />
+    <option name="LAST_COMMIT_MESSAGE" value="create total order form" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -243,11 +252,10 @@
           <line>54</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Order.js</url>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/JavaEE_Assignment$Tomcat_10_1_16.ic" NAME="Tomcat 10.1.16 Coverage Results" MODIFIED="1705484408496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
