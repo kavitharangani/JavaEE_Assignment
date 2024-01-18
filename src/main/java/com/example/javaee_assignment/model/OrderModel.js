@@ -1,5 +1,4 @@
 export class OrderModel{
-
     constructor(order_id,customer_id,total,items,date) {
         this.order_id = order_id;
         this.customer_id = customer_id;

@@ -71,15 +71,16 @@ $('#nav_place').on('click', () => {
     $("#customer").css('display','none');
     $("#item").css('display','none');
     $("#order").css('display','block');
-    $("#home_main").css('display','none');
+    $("#menu-section").css('display','none');
     $("#place_order").css('display','none');
 })
+
 $('#nav_recent').on('click', () => {
     event.preventDefault();
     $("#customer").css('display','none');
     $("#item").css('display','none');
     $("#order").css('display','none');
-    $("#home_main").css('display','none');
+    $("#menu-section").css('display','none');
     $("#place_order").css('display','block');
 
 })
