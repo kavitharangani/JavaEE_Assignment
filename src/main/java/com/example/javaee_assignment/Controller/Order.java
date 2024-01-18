@@ -1,4 +1,4 @@
-package com.example.javaee_assignment.main;
+package com.example.javaee_assignment.Controller;
 
 import com.example.javaee_assignment.db.OrderDBProcess;
 import com.example.javaee_assignment.dto.OrderDTO;
@@ -68,5 +68,34 @@ public class Order extends HttpServlet {
             jsonb.toJson(orderDTO, resp.getWriter());
 
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javaeeassignment","root","1234");
+            ResultSet rst = connection.prepareStatement("select * from orders").executeQuery();
+            String allRecords = "";
+            while (rst.next()){
+                String order_id = rst.getString(1);
+                String customer_id = rst.getString(2);
+                String customer_name = rst.getString(3);
+                String order_item_id = rst.getString(4);
+                String description = rst.getString(5);
+                double total = rst.getDouble(6);
+
+                String orders="{\"order_id\":\""+order_id+"\",\"customer_id\":\""+customer_id+"\",\"customer_name\":\""+customer_name+"\",\"order_item_id\":\""+order_item_id+"\",\"description\":\""+description+"\",\"total\":"+total+"},";
+                allRecords = allRecords + orders;
+            }
+            String finalJson = "[" + allRecords.substring(0,allRecords.length()-1) + "]";
+            PrintWriter writer = resp.getWriter();
+            writer.write(finalJson);
+            resp.setContentType("application/json");
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

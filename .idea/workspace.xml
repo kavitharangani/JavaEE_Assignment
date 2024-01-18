@@ -10,7 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7aadb08f-c2e2-4c3c-a29b-64c92563a1d3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Home page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Home page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/Controller/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/Controller/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/db/OrderDBProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/db/OrderDBProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Order.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/recent_order_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/recent_order_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/model/OrderModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/model/OrderModel.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +199,8 @@
       <workItem from="1705489529118" duration="774000" />
       <workItem from="1705500054238" duration="12807000" />
       <workItem from="1705557233720" duration="2763000" />
-      <workItem from="1705566153456" duration="1140000" />
+      <workItem from="1705566153456" duration="1588000" />
+      <workItem from="1705593398186" duration="1270000" />
     </task>
     <task id="LOCAL-00001" summary="create search">
       <created>1705300354046</created>
@@ -251,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705575390397</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="create save detail order form">
+      <created>1705575982422</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1705575982422</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

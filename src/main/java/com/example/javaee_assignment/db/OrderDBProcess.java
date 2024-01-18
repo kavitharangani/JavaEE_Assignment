@@ -2,7 +2,6 @@ package com.example.javaee_assignment.db;
 
 import com.example.javaee_assignment.dto.ItemDTO;
 import com.example.javaee_assignment.dto.OrderDTO;
-import com.example.javaee_assignment.main.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
