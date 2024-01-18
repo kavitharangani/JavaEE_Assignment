@@ -1,4 +1,4 @@
-package com.example.javaee_assignment.Controller;
+package com.example.javaee_assignment.main;
 
 import com.example.javaee_assignment.db.OrderDBProcess;
 import com.example.javaee_assignment.dto.OrderDTO;

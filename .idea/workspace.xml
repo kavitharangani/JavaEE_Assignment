@@ -10,23 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7aadb08f-c2e2-4c3c-a29b-64c92563a1d3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/Controller/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/410a517f-7e7f-4854-98ff-618758ade172.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/410a517f-7e7f-4854-98ff-618758ade172.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/controller/customer_page_controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/controller/home_page_controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/controller/item_page_controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/controller/order_page_controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/controller/recent_order_page_controller.js" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/home_page_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/Controller/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/Controller/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/Controller/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/Controller/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/Controller/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/Controller/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/db/OrderDBProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/db/OrderDBProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/dto/OrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/dto/OrderDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Item.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Item.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Order.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/Order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/recent_order_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/javaScript/recent_order_page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/main/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/Controller/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/main/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/Controller/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_assignment/main/Order.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +197,7 @@
       <workItem from="1705476768157" duration="9581000" />
       <workItem from="1705489529118" duration="774000" />
       <workItem from="1705500054238" duration="12807000" />
-      <workItem from="1705557233720" duration="2073000" />
+      <workItem from="1705557233720" duration="2763000" />
     </task>
     <task id="LOCAL-00001" summary="create search">
       <created>1705300354046</created>
@@ -245,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705471603807</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="create save detail order form">
+      <created>1705559369929</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1705559369929</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,7 +253,8 @@
     <MESSAGE value="create combo box order form" />
     <MESSAGE value="create click action" />
     <MESSAGE value="create total order form" />
-    <option name="LAST_COMMIT_MESSAGE" value="create total order form" />
+    <MESSAGE value="create save detail order form" />
+    <option name="LAST_COMMIT_MESSAGE" value="create save detail order form" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
