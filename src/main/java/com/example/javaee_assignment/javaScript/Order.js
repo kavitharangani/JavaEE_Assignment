@@ -75,25 +75,17 @@ $("#add_cart").click(function () {
 $("#unit_price, #qty_on_hand").on("input", updateTotal);
 
 
+
 let itemsArray = [
     { item_id: '1', description: 'Item 1', qty: 10, item_price: 5.00 },
     { item_id: '2', description: 'Item 2', qty: 20, item_price: 10.00 },
-    // Add more items as needed
 ];
 
 function loadItemData() {
-    // Implement your loadItemData logic here
-    // This is just a placeholder
+
 }
 
 function updateTotal() {
-    // Implement your updateTotal logic here
-    // This is just a placeholder
-}
-
-function calculateTotal() {
-    // Implement your calculateTotal logic here
-    // This is just a placeholder
 }
 
 function addToCart() {
@@ -108,7 +100,7 @@ function addToCart() {
             let newQty = existingQty + qty;
 
             let existingTotal = parseFloat($(this).closest('tr').find('.total').text());
-            let add_total = updateTotal();
+            let add_total = updateTotal(); // Update the total and return it
             let newTotal = existingTotal + add_total;
 
             let selectedItem = itemsArray.find(item => item.item_id === item_id);
@@ -120,13 +112,14 @@ function addToCart() {
                 } else {
                     selectedItem.qty -= qty;
                     $(this).closest('tr').find('.qty').text(newQty);
-                    $(this).closest('tr').find('.total').text(newTotal);
+                    $(this).closest('tr').find('.total').text(newTotal.toFixed(2));
                     loadItemData();
                 }
             }
 
-            return false; // Break the loop if a match is found
+            return false;
         }
+
     });
 
     if (!itemExists) {
@@ -148,39 +141,169 @@ function addToCart() {
             }
         }
 
-        let record = `<tr><td class="item_id">${item_id}</td><td class="desc">${desc}</td><td class="qty">${qty}</td><td class="total">${total}</td></tr>;`
+        let record = `<tr><td class="item_id">${item_id}</td><td class="desc">${desc}</td><td class="qty">${qty}</td><td class="total">${total.toFixed(2)}</td></tr>`;
         $("#order_table_body").append(record);
 
         toastr.success("Add to cart...🛒");
     } else {
         console.log('Item not found in itemsArray.');
     }
-    function updateTotal() {
-        const unitPrice = parseFloat($("#unit_price").val()) || 0;
-        const quantity = parseInt($("#qty_on_hand").val()) || 0;
-        const total = (unitPrice * quantity).toFixed(2);
-        $("#final_total").val(total);
-    }
 
-    // let final_total = 0;
-    // $('#order_table_body tr').each(function () {
-    //     let total = parseFloat($(this).find('.total').text());
-    //     final_total += total;
-    // });
-
-    // $('#final_total').val(final_total);
-
-    /*const cmbItemId = document.getElementById('customer_id');
-    cmbItemId.innerHTML = '';*/
+    $("#order_item_id").val('');
     $('#description').val('');
     $('#unit_price').val('');
     $('#qty_on_hand').val('');
     $('#order_qty').val('');
+
+
+    function updateTotal() {
+        const unitPrice = parseFloat($("#unit_price").val()) || 0;
+        const quantity = parseInt($("#order_qty").val()) || 0;
+        const total = (unitPrice * quantity);
+        $("#final_total").val(total.toFixed(2));
+        // let finalTotal = 0;
+
+        // $("#order_table_body tr").each(function () {
+        //     let totalForRow = parseFloat($(this).find('.total').text()) || 0;
+        //     finalTotal += totalForRow;
+        // });
+        //
+        // console.log("Final Total:", finalTotal);
+        //
+        // $("#final_total").val(finalTotal.toFixed(2));
+        return total;
+    }
+
+    callMethod();
 }
 
+
 $('#add_cart').on('click', addToCart);
+callMethod();
 
 
+function callMethod() {
+    $("#order_table_body > tr").click(function () {
+        let item_id = $(this).find('.item_id').text();
+        let desc = $(this).find('.desc').text();
+        let qty = $(this).find('.qty').text();
+        let total = $(this).find('.total').text();
 
+        $("#order_item_id").val(item_id);
+        $("#description").val(desc);
+        $("#order_qty").val(qty);
+        $("#final_total").val(total);
+
+    });
+}
+
+
+$("#remove").click(function () {
+    let selectedItemId = $('#order_item_id').val();
+
+    $('#order_item_id').val('');
+    $('#description').val('');
+    $('#unit_price').val('');
+    $('#qty_on_hand').val('');
+    $('#order_qty').val('');
+    $('#final_total').val('');
+
+    $("#order_table_body tr").each(function () {
+        if ($(this).find('.item_id').text() === selectedItemId) {
+            $(this).remove();
+            return false;
+        }
+    });
+});
+
+$("#place_ord").click(function () {
+    let order_id = $("#order_id").val();
+    let customer_id = $("#customer_id").val();
+    let customer_name = $("#customer_name").val();
+
+    // Assuming you have a table with ID order_table_body
+    let $lastRow = $("#order_table_body tr:last");
+    let order_item_id = $lastRow.find('.item_id').text();
+    let description = $lastRow.find('.desc').text();
+    let total = parseFloat($lastRow.find('.total').text());
+
+    $.ajax({
+        method: "POST",
+        contentType: "application/json",
+        url: "http://localhost:8081/JavaEE_Assignment_war_exploded/orders",
+        data: JSON.stringify({
+            order_id: order_id,
+            customer_id: customer_id,
+            customer_name: customer_name,
+            order_item_id: order_item_id,
+            description: description,
+            total: total
+        }),
+        success: function (data) {
+            alert("Order saved successfully!");
+            // You may perform additional actions after a successful save
+        },
+        error: function (xhr, exception) {
+            alert("Error occurred while saving order.");
+        }
+    });
+});
+
+
+// $('#place_ord').on('click', () => {
+//     let order_id = $('#order_id').val();
+//     let customer_id = $('#customer_id option:selected').text();
+//     let total = $('#final_total').val();
+//
+//     let items = [];
+//     var now = new Date();
+//     var date = now.toLocaleDateString();
+//
+//     for (let i = 0; i < $('#order_table_body tr').length; i++) {
+//         let row = $('#order_table_body tr').eq(i);
+//         let item_id = row.find('.item_id').text();
+//         let desc = row.find('.desc').text();
+//         let qtyOnHand = row.find('.qtyOnHand').text();
+//         let itemTotal = row.find('.total').text();
+//
+//         let item = {
+//             item_id: item_id,
+//             desc: desc,
+//             qtyOnHand: qtyOnHand,
+//             total: itemTotal
+//         };
+//
+//         items.push(item);
+//     }
+//
+//     let order = {
+//         order_id: order_id,
+//         customer_id: customer_id,
+//         total: total,
+//         items: items,
+//         date: date
+//     };
+//
+//     // Assuming orders is declared elsewhere in your code
+//     orders.push(order);
+//
+//     toastr.success('Order placed successfully...🎁');
+//     loadOrderCards();
+//
+//     // Clear the table and reset total
+//     $('#order_table_body').empty();
+//     $('#final_total').val('');
+//
+//     // Generate a new order ID
+//     const newOrderID = generateOrderID();
+//     $('#order_id').val(newOrderID);
+//
+//     // Clear customer name and options
+//     $('#customer_name').val('');
+//     const cust_id = document.getElementById('customer_id');
+//     cust_id.innerHTML = '';
+//
+//     console.log(orders);
+// });
 
 

@@ -107,6 +107,7 @@ $(document).ready(function (){
     });
 
 
+
     function callMethod(){
         $("#item-tbl-body>tr").click(function (){
             let code =$(this).children().eq(0).text();
@@ -120,6 +121,8 @@ $(document).ready(function (){
             $("#price").val(unitPrice);
         })
     }
+
+
 
 });
 
